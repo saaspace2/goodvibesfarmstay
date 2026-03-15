@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Vibes Farm Stay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green:  #2d6a4f;
+    --green2: #52b788;
+    --yellow: #f4a261;
+    --red:    #e63946;
+    --dark:   #1a1a2e;
+    --card:   rgba(255,255,255,0.07);
+  }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Animated background blobs */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+    z-index: 0;
+    animation: blob 8s ease-in-out infinite alternate;
+  }
+  body::before {
+    width: 500px; height: 500px;
+    background: var(--green);
+    top: -100px; left: -100px;
+  }
+  body::after {
+    width: 400px; height: 400px;
+    background: var(--yellow);
+    bottom: -80px; right: -80px;
+    animation-delay: -4s;
+  }
+  @keyframes blob {
+    from { transform: scale(1) translate(0,0); }
+    to   { transform: scale(1.2) translate(30px, 20px); }
+  }
+
+  .container { position: relative; z-index: 1; width: 100%; max-width: 560px; text-align: center; }
+
+  /* Logo */
+  .logo-wrap {
+    margin-bottom: 10px;
+    animation: fadeDown 0.6s ease both;
+  }
+  .logo-wrap img {
+    width: 130px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+  }
+
+  .brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(42px, 10vw, 64px);
+    letter-spacing: 4px;
+    color: #fff;
+    line-height: 1;
+    animation: fadeDown 0.7s ease both;
+    animation-delay: 0.1s;
+  }
+  .brand span { color: var(--yellow); }
+
+  .tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    margin-bottom: 40px;
+    animation: fadeDown 0.7s ease both;
+    animation-delay: 0.2s;
+  }
+
+  /* Role cards */
+  .roles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.35s;
+  }
+
+  .role-card {
+    background: var(--card);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 28px 16px 24px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+  }
+  .role-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.12);
+  }
+  .role-card:active { transform: translateY(-2px); }
+
+  .role-icon {
+    font-size: 42px;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+  }
+
+  .role-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .role-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  .role-btn {
+    margin-top: 4px;
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .role-btn:hover { opacity: 0.85; }
+
+  .waiter-card .role-btn  { background: var(--green2); color: #fff; }
+  .kitchen-card .role-btn { background: var(--red);    color: #fff; }
+  .cashier-card .role-btn { background: var(--yellow); color: #1a1a2e; }
+
+  .footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.2);
+    animation: fadeUp 0.7s ease both;
+    animation-delay: 0.5s;
+  }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 420px) {
+    .roles { grid-template-columns: 1fr; max-width: 280px; margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="logo-wrap">
+    <!-- SVG placeholder logo matching Good Vibes aesthetic -->
+    <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="55" cy="55" r="52" fill="#1B4332" stroke="#52B788" stroke-width="2"/>
+      <text x="55" y="48" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#F4A261" letter-spacing="2">GOOD</text>
+      <text x="55" y="72" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#52B788" letter-spacing="2">VIBES</text>
+      <text x="55" y="88" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" fill="rgba(255,255,255,0.5)" letter-spacing="1">FARM STAY</text>
+    </svg>
+  </div>
+
+  <div class="brand">Good <span>Vibes</span></div>
+  <div class="tagline">Farm Stay · Dharan-5</div>
+
+  <div class="roles">
+
+    <a href="waiter/index.html" class="role-card waiter-card">
+      <div class="role-icon">🛎️</div>
+      <div class="role-name">Waiter</div>
+      <div class="role-desc">Take orders & send to kitchen</div>
+      <button class="role-btn">Enter</button>
+    </a>
+
+    <a href="kitchen/index.html" class="role-card kitchen-card">
+      <div class="role-icon">👨‍🍳</div>
+      <div class="role-name">Kitchen</div>
+      <div class="role-desc">View & manage live orders</div>
+      <button class="role-btn">Enter</button>
+    </a>
+
+    <a href="cashier/index.html" class="role-card cashier-card">
+      <div class="role-icon">💰</div>
+      <div class="role-name">Cashier</div>
+      <div class="role-desc">Generate bills & receipts</div>
+      <button class="role-btn">Enter</button>
+    </a>
+
+  </div>
+
+  <div class="footer">© 2024 Good Vibes Farm Stay · Dharan-5 · @goodvibesfarmstay</div>
+</div>
+
+</body>
+</html>
